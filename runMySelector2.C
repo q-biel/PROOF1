@@ -1,0 +1,8 @@
+{
+TFile *file = TFile::Open("Data.root");
+TTree *tree =  (TTree*) file->Get("Data");
+TProof::Open("workers=8");
+tree->SetProof();
+tree->Process("MySelector.C+");
+SafeDelete(tree);
+}

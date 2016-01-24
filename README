@@ -1,0 +1,6 @@
+Dane wejściowe w pliku "Data.root"
+
+Uruchamianie analizy : root -l runMySelector.C
+Liczbę wątków można zmieniać w pliku runMySelector.C
+
+Pliki wyjściowe : outFile.root, x.png, y.png

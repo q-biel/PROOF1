@@ -1,0 +1,8 @@
+{
+TChain *ch = new TChain("Data", "Ntuple");
+ch->Add("Data.root");
+TProof *p = TProof::Open("workers=8");
+ch->SetProof();
+ch->Process("MySelector.C+");
+
+}

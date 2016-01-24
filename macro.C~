@@ -1,0 +1,28 @@
+#include <iostream>
+#include <fstream>
+
+void macro(int maxWorkers) {
+   //double realTime;
+   TChain *ch;
+   TProof *proof = TProof::Open("");
+   ofstream myfile("timing.txt", ios::trunc);
+   myfile.close();
+  
+   for(int i = 1; i <= maxWorkers; i++) { 
+   for(int j = 0; j <=5; j++){
+   myfile.open("timing.txt", ios::app);
+      myfile << i << "\t";
+      myfile.close();
+      ch = new TChain("Data", "NTuple");
+      ch->Add("Data.root");
+      proof->SetParallel(i);
+      ch->SetProof();
+      ch->Process("MySelector.C+");
+      SafeDelete(ch);
+      gSystem->Exec("rm *.png");
+      gSystem->Exec("rm outFile.root");
+      }
+      }
+      
+   }
+
